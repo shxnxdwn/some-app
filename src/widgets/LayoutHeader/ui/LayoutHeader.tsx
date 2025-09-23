@@ -21,7 +21,7 @@ const LayoutHeader = () => {
       <header className={styles.header}>
         <div className={styles.container}>
           <Link to="/" className={styles.logo}>
-            Aston App
+            Some App
           </Link>
           <div className={styles.controls}>
             <nav className={styles.nav}>
@@ -44,7 +44,7 @@ const LayoutHeader = () => {
             <h2>О проекте</h2>
           </Modal.Header>
           <Modal.Body>
-            <p>Учебное приложение для обучения на курсе Aston. Создано на TS + React + Vite</p>
+            <p>Учебное приложение для обучения на курсе. Создано на TS + React + Vite</p>
           </Modal.Body>
           <Modal.Footer className={styles.modalFooter}>
             <Button variant="primary" onClick={closeModal} className={styles.modalButton}>
