@@ -1,3 +1,2 @@
-# Aston App
-
-Тестовое приложение на TS | React | RTK | Vite
+# Some App
+Пример приложения на Vite | TS | React | RTK + RTK Query
