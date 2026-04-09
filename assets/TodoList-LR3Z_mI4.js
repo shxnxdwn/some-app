@@ -1,0 +1,1 @@
+import{u as e}from"./config-B0x0Oqi7.js";import{s as t}from"./index-B-I-kW7T.js";import{t as n}from"./withLoading-Duw-80mf.js";var r={todoList:`_todoList_1a9ex_1`},i=e(),a=n(({todos:e})=>(0,i.jsx)(`section`,{className:r.todoList,children:e.map(e=>(0,i.jsx)(t,{id:e.id,title:e.title,completed:e.completed},e.id))}));export{a as t};
