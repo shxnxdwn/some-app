@@ -1,0 +1,1 @@
+import{l as e,u as t}from"./config-BZueS-aD.js";var n=t(),r=t=>r=>{let{isLoading:i,...a}=r;return i?(0,n.jsx)(e,{}):(0,n.jsx)(t,{...a})};export{r as t};

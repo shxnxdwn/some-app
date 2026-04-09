@@ -1,0 +1,1 @@
+import{u as e}from"./config-BZueS-aD.js";import{d as t}from"./index--lCHSHH5.js";import{t as n}from"./withLoading-Sz67EZbm.js";var r={postList:`_postList_19rxi_1`},i=e(),a=n(({posts:e})=>(0,i.jsx)(`section`,{className:r.postList,children:e.map(e=>(0,i.jsx)(t,{id:e.id,title:e.title,body:e.body},e.id))}));export{a as t};
