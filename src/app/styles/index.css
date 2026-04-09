@@ -30,6 +30,12 @@ a {
   --footer-border: #333333;
   --footer-text-color: #888888;
   --switcher-bg: #333333;
+  --pagination-bg: #1A1A1A;
+  --pagination-border: #333333;
+  --pagination-hover-bg: #2A2A2A;
+  --pagination-active-bg: #007bff;
+  --pagination-active-text: #FAFAFA;
+  --pagination-disabled-opacity: 0.5;
 }
 
 :root[data-theme="theme-light"] {
@@ -50,6 +56,12 @@ a {
   --footer-border: #E5E5E5;
   --footer-text-color: #888888;
   --switcher-bg: #СССССС;
+  --pagination-bg: #FFFFFF;
+  --pagination-border: #E5E5E5;
+  --pagination-hover-bg: #F0F0F0;
+  --pagination-active-bg: #007CF0;
+  --pagination-active-text: #FFFFFF;
+  --pagination-disabled-opacity: 0.5;
 }
 
 body {
