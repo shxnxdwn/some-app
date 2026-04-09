@@ -1,15 +1,17 @@
 import styles from './Posts.module.css';
-import { useMemo, useState } from 'react';
-import { filterByLength, type LengthFilterType, PostLengthFilter } from '@/features/PostLengthFilter';
+import { PostLengthFilter } from '@/features/PostLengthFilter';
 import { PostList } from '@/widgets/PostList';
 import { useGetPostsQuery } from '@/entities/Post';
+import Pagination from '@/shared/ui/Pagination';
+import { usePostPagination } from '@/pages/Posts/model/hooks/usePostPagination';
+
+const POSTS_PER_PAGE = 10;
 
 const Posts = () => {
-  const { data: posts, isLoading, isError } = useGetPostsQuery();
+  const { data: posts = [], isLoading, isError } = useGetPostsQuery();
 
-  const [activeFilter, setActiveFilter] = useState<LengthFilterType>('all');
-
-  const filteredPosts = useMemo(() => filterByLength(posts || [], activeFilter), [posts, activeFilter]);
+  const { currentPage, totalPages, paginatedPosts, activeFilter, handleFilterChange, handlePageChange } =
+    usePostPagination({ posts, itemsPerPage: POSTS_PER_PAGE });
 
   if (isError) {
     return (
@@ -22,10 +24,16 @@ const Posts = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Посты</h1>
-      <PostLengthFilter className={styles.filter} activeFilter={activeFilter} onFilterChange={setActiveFilter} />
+
+      <PostLengthFilter className={styles.filter} activeFilter={activeFilter} onFilterChange={handleFilterChange} />
+
       <div className={styles.contentWrapper}>
-        <PostList isLoading={isLoading} posts={filteredPosts} />
+        <PostList isLoading={isLoading} posts={paginatedPosts} />
       </div>
+
+      {!isLoading && totalPages > 1 && (
+        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+      )}
     </div>
   );
 };

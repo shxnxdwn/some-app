@@ -1,5 +1,5 @@
 import styles from './PostLengthFilter.module.css';
-import type { LengthFilterType } from '@/features/PostLengthFilter/lib/filterByLength.ts';
+import type { LengthFilterType } from '@/features/PostLengthFilter/model/lib/filterByLength.ts';
 import { FilterConfig, filterTypes } from '@/features/PostLengthFilter/model/config.ts';
 import Button from '@/shared/ui/Button';
 
