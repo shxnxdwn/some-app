@@ -1,22 +1,19 @@
 import styles from './Pagination.module.css';
 
-interface PaginationProps {
+type PaginationProps = {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
-}
+};
 
-const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) => {
+const Pagination = (props: PaginationProps) => {
+  const { currentPage, totalPages, onPageChange } = props;
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
     <div className={styles.pagination}>
-      <button
-        className={styles.button}
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-        ← Предыдущая
+      <button className={styles.button} onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
+        Предыдущая
       </button>
 
       <div className={styles.pages}>
@@ -36,11 +33,10 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        Следующая →
+        Следующая
       </button>
     </div>
   );
 };
 
 export default Pagination;
-

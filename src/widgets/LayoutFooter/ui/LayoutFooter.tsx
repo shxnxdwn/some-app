@@ -4,7 +4,7 @@ const LayoutFooter = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <p>{new Date().getFullYear()} Все права защищены</p>
+        <p>{new Date().getFullYear()} &copy; Все права защищены</p>
       </div>
     </footer>
   );

@@ -44,7 +44,7 @@ const LayoutHeader = () => {
             <h2>О проекте</h2>
           </Modal.Header>
           <Modal.Body>
-            <p>Учебное приложение для обучения на курсе. Создано на TS + React + Vite</p>
+            <p>Пет-проект на Vite | TS | React | RTK + RTK Query</p>
           </Modal.Body>
           <Modal.Footer className={styles.modalFooter}>
             <Button variant="primary" onClick={closeModal} className={styles.modalButton}>
