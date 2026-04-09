@@ -1,1 +1,0 @@
-import{u as e}from"./config-BZueS-aD.js";import{y as t}from"./index--lCHSHH5.js";import{t as n}from"./withLoading-Sz67EZbm.js";var r={albumList:`_albumList_xbnor_1`},i=e(),a=n(({albums:e})=>(0,i.jsx)(`section`,{className:r.albumList,children:e.map(e=>(0,i.jsx)(t,{id:e.id,userId:e.userId,title:e.title},e.id))}));export{a as t};
