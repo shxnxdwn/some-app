@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react-oxc';
 import path from 'path';
 
 export default defineConfig({
-  base: '/some-app/',
+  base: '/some-app/src',
   plugins: [react()],
   resolve: {
     alias: {
