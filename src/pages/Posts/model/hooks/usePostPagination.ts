@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { filterByLength, type LengthFilterType } from '@/features/PostLengthFilter';
 import type { PostType } from '@/entities/Post';
 
@@ -8,30 +9,42 @@ type UsePostPaginationProps = {
 };
 
 const usePostPagination = ({ posts, itemsPerPage }: UsePostPaginationProps) => {
-  const [activeFilter, setActiveFilter] = useState<LengthFilterType>('all');
-  const [currentPage, setCurrentPage] = useState(1);
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeFilter = (searchParams.get('filter') as LengthFilterType) || 'all';
+  const pageFromUrl = parseInt(searchParams.get('page') || '1', 10);
+  const currentPage = isNaN(pageFromUrl) || pageFromUrl < 1 ? 1 : pageFromUrl;
   const filteredPosts = useMemo(() => filterByLength(posts, activeFilter), [posts, activeFilter]);
 
-  const totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredPosts.length / itemsPerPage) || 1;
+
+  const actualPage = currentPage > totalPages ? totalPages : currentPage;
 
   const paginatedPosts = useMemo(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
+    const startIndex = (actualPage - 1) * itemsPerPage;
     return filteredPosts.slice(startIndex, startIndex + itemsPerPage);
-  }, [filteredPosts, currentPage, itemsPerPage]);
+  }, [filteredPosts, actualPage, itemsPerPage]);
 
   const handleFilterChange = (filter: LengthFilterType) => {
-    setActiveFilter(filter);
-    setCurrentPage(1);
+    setSearchParams({
+      filter: filter,
+      page: '1'
+    });
+  };
+
+  const handlePageChange = (page: number) => {
+    setSearchParams({
+      filter: activeFilter,
+      page: page.toString()
+    });
   };
 
   return {
-    currentPage,
+    currentPage: actualPage,
     totalPages,
     paginatedPosts,
     activeFilter,
     handleFilterChange,
-    handlePageChange: setCurrentPage
+    handlePageChange
   };
 };
 
